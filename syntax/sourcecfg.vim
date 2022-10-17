@@ -95,6 +95,7 @@ syn keyword sourceCommand       bot_add_t bot_all_weapons bot_changeteams bot_co
 syn keyword sourceCommand       bot_goto_selected bot_hurt bot_kick bot_kill bot_knives_only bot_moveto
 syn keyword sourceCommand       bot_pistols_only bot_place bot_refill bot_snipers_only bot_teleport bot_whack
 syn keyword sourceCommand       box buddha budget_toggle_group bug bug_swap buildcubemaps buildmodelforworld
+syn keyword sourceCommand       build destroy
 syn keyword sourceCommand       buy buyammo1 buyammo2 buy_stamps buymenu buyrandom cache_print cache_print_lru
 syn keyword sourceCommand       cache_print_summary callvote camortho cancelselect cast_hull cast_ray cc_bot_selectweapon
 syn keyword sourceCommand       cc_emit cc_findsound cc_flush cc_random cc_showblocks centerview ch_createairboat
@@ -107,7 +108,7 @@ syn keyword sourceCommand       cl_decline_first_notification cl_destroy_ragdoll
 syn keyword sourceCommand       cl_dumpsplithacks cl_engine_reload_rosetta cl_ent_absbox cl_ent_bbox
 syn keyword sourceCommand       cl_ent_rbox cl_find_ent cl_find_ent_index cl_fullupdate cl_game_mode_convars
 syn keyword sourceCommand       cl_gameserver_create_identity cl_gameserver_list cl_gameserver_reset_identity
-syn keyword sourceCommand       cl_modemanager_reload cl_panelanimation cl_particles_dump_effects
+syn keyword sourceCommand       cl_modemanager_reload cl_mvm_wave_status_visible_during_wave cl_panelanimation cl_particles_dump_effects
 syn keyword sourceCommand       cl_particles_dumplist cl_precacheinfo cl_pred_track cl_predictioncopy_describe
 syn keyword sourceCommand       cl_print_consistency_list cl_reload_hud cl_remove_all_workshop_maps
 syn keyword sourceCommand       cl_removedecals cl_report_soundpatch cl_saveweaponcustomtextures cl_showents
@@ -659,7 +660,7 @@ syn keyword sourceVar           hud_achievement_count hud_achievement_count_engi
 syn keyword sourceVar           hud_achievement_description hud_achievement_glowtime hud_achievement_tracker
 syn keyword sourceVar           hud_airboathint_numentries hud_autoaim_method hud_autoaim_scale_icon
 syn keyword sourceVar           hud_autoreloadscript hud_classautokill hud_combattext
-syn keyword sourceVar           hud_combattext_batching hud_combattext_batching_window hud_combattext_batching_red hud_combattext_batching_green hud_combattext_batching_blue
+syn keyword sourceVar           hud_combattext_batching hud_combattext_batching_window hud_combattext_red hud_combattext_green hud_combattext_blue
 syn keyword sourceVar           hud_combattext_healing hud_deathnotice_bots hud_deathnotice_threats
 syn keyword sourceVar           hud_deathnotice_time hud_dmgrecord_persisttime_deaths
 syn keyword sourceVar           hud_dmgrecord_persisttime_other hud_draw_active_reticle hud_draw_fixed_reticle
@@ -884,7 +885,7 @@ syn keyword sourceVar           net_graphsolid net_graphtext net_maxcleartime ne
 syn keyword sourceVar           net_maxpacketdrop net_maxroutable net_megasnapshot net_minroutable net_paranoid
 syn keyword sourceVar           net_public_adr net_queue_trace net_queued_packet_thread net_scale net_showdrop
 syn keyword sourceVar           net_showeventlisteners net_showevents net_showfragments net_showmsg
-syn keyword sourceVar           net_showpeaks net_showsplits net_showtcp net_showudp net_showudp_oob
+syn keyword sourceVar           net_showpeaks net_showsplits net_showtcp net_showudp net_showudp_oob next_map_vote
 syn keyword sourceVar           net_showudp_remoteonly net_showudp_wire net_showusercmd net_splitpacket_maxrate
 syn keyword sourceVar           net_splitrate net_steamcnx_allowrelay net_steamcnx_debug net_steamcnx_enabled
 syn keyword sourceVar           net_threaded_socket_burst_cap net_threaded_socket_recovery_rate
@@ -1367,7 +1368,7 @@ syn keyword sourceVar           tf_explanations_backpackpanel tf_explanations_ch
 syn keyword sourceVar           tf_explanations_charinfopanel tf_explanations_craftingpanel
 syn keyword sourceVar           tf_explanations_discardpanel tf_explanations_store tf_explanations_tradingpanel
 syn keyword sourceVar           tf_flag_caps_per_round tf_force_holidays_off tf_forced_holiday
-syn keyword sourceVar           tf_gamemode_arena tf_gamemode_cp tf_gamemode_ctf tf_gamemode_mvm
+syn keyword sourceVar           tf_gamemode_arena tf_gamemode_cp tf_gamemode_ctf tf_gamemode_mvm tf_fall_damage_disablespread
 syn keyword sourceVar           tf_gamemode_payload tf_gamemode_sd tf_grenadelauncher_min_contact_speed
 syn keyword sourceVar           tf_highfive_debug tf_highfive_hintcount tf_hud_no_crosshair_on_scope_zoom
 syn keyword sourceVar           tf_hud_notification_duration tf_hud_num_building_alert_beeps tf_invuln_time tf_hud_target_id_disable_floating_health
@@ -1591,7 +1592,7 @@ syn keyword sourceCheat         cl_glow_los_fade_out_time cl_gunlowerangle cl_gu
 syn keyword sourceCheat         cl_jiggle_bone_debug cl_jiggle_bone_debug_pitch_constraints
 syn keyword sourceCheat         cl_jiggle_bone_debug_yaw_constraints cl_jiggle_bone_invert cl_leafsystemvis
 syn keyword sourceCheat         cl_leveloverview cl_leveloverviewmarker cl_max_shadow_renderable_dist
-syn keyword sourceCheat         cl_maxrenderable_dist cl_mvm_wave_status_visible_during_wave cl_obj_test_building_damage cl_overdraw_test
+syn keyword sourceCheat         cl_maxrenderable_dist cl_obj_test_building_damage cl_overdraw_test
 syn keyword sourceCheat         cl_particle_retire_cost cl_particleeffect_aabb_buffer cl_particles_show_bbox
 syn keyword sourceCheat         cl_particles_show_controlpoints cl_pclass cl_pdump cl_phys2_stats
 syn keyword sourceCheat         cl_phys_show_active cl_phys_timescale cl_pitchdown cl_pitchup
@@ -2176,7 +2177,7 @@ syn keyword sourceCheat         tf_eyeball_boss_debug_orientation tf_eyeball_bos
 syn keyword sourceCheat         tf_eyeball_boss_health_base tf_eyeball_boss_health_per_level
 syn keyword sourceCheat         tf_eyeball_boss_health_per_player tf_eyeball_boss_horiz_damping
 syn keyword sourceCheat         tf_eyeball_boss_hover_height tf_eyeball_boss_lifetime tf_eyeball_boss_speed
-syn keyword sourceCheat         tf_eyeball_boss_vert_damping tf_fastbuild tf_fall_damage_disablespread tf_feign_death_damage_scale
+syn keyword sourceCheat         tf_eyeball_boss_vert_damping tf_fastbuild tf_feign_death_damage_scale
 syn keyword sourceCheat         tf_feign_death_duration tf_flamethrower_boxsize tf_flamethrower_burst_zvelocity
 syn keyword sourceCheat         tf_flamethrower_burstammo tf_flamethrower_drag tf_flamethrower_flametime
 syn keyword sourceCheat         tf_flamethrower_float tf_flamethrower_maxdamagedist
