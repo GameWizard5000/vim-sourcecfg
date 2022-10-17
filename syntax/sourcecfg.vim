@@ -49,7 +49,7 @@ syn match sourceCommand         '+camout\|+campitchdown\|+campitchup\|+camyawlef
 syn match sourceCommand         '+csm_rot_x_neg\|+csm_rot_x_plus\|+csm_rot_y_neg\|+csm_rot_y_plus\|+demoui2\|+duck'
 syn match sourceCommand         '+forward\|+graph\|+grenade1\|+grenade2\|+invaction\|+jlook\|+jump\|+klook\|+left'
 syn match sourceCommand         '+lookdown\|+lookspin\|+lookup\|+mat_texture_list\|+menuAccept\|+menuDown\|+menuUp'
-syn match sourceCommand         '+mouse_menu\|+movedown\|+moveleft\|+moveright\|+moveup\|+posedebug\|+quickswitch'
+syn match sourceCommand         '+mouse_menu\|+movedown\|+moveleft\|+taunt\|+moveright\|+moveup\|+posedebug\|+quickswitch'
 syn match sourceCommand         '+reload\|+right\|+score\|+showbudget\|+showbudget_texture'
 syn match sourceCommand         '+showbudget_texture_global\|+showscores\|+showstats\|+showvprof'
 syn match sourceCommand         '+sixense_left_point_gesture\|+sixense_ratchet\|+sixense_right_point_gesture'
@@ -59,7 +59,7 @@ syn match sourceCommand         '-camin\|-cammousemove\|-camout\|-campitchdown\|
 syn match sourceCommand         '-commandermousemove\|-csm_rot_x_neg\|-csm_rot_x_plus\|-csm_rot_y_neg'
 syn match sourceCommand         '-csm_rot_y_plus\|-demoui2\|-duck\|-forward\|-graph\|-grenade1\|-grenade2\|-invaction'
 syn match sourceCommand         '-jlook\|-jump\|-klook\|-left\|-lookdown\|-lookspin\|-lookup\|-mat_texture_list'
-syn match sourceCommand         '-menuAccept\|-menuDown\|-menuUp\|-mouse_menu\|-movedown\|-moveleft\|-moveright'
+syn match sourceCommand         '-menuAccept\|-menuDown\|-menuUp\|-mouse_menu\|-movedown\|-moveleft\|-taunt\|-moveright'
 syn match sourceCommand         '-moveup\|-posedebug\|-quickswitch\|-reload\|-right\|-score\|-showbudget'
 syn match sourceCommand         '-showbudget_texture\|-showbudget_texture_global\|-showscores\|-showstats'
 syn match sourceCommand         '-showvprof\|-sixense_left_point_gesture\|-sixense_ratchet'
@@ -160,7 +160,7 @@ syn keyword sourceCommand       hide_message_panel hideconsole hideoverviewmap h
 syn keyword sourceCommand       hidestatpanel host_filtered_time_report host_reset_config host_runofftime
 syn keyword sourceCommand       host_timer_report host_workshop_collection host_workshop_map host_writeconfig
 syn keyword sourceCommand       host_writeconfig_ss hud_reloadscheme hud_subtitles hurtme
-syn keyword sourceCommand       ifm_basecamera_camerastate impulse incrementvar inspect invnext invnextgrenade
+syn keyword sourceCommand       ifm_basecamera_camerastate impulse incrementvar taunt inspect invnext invnextgrenade
 syn keyword sourceCommand       invnextitem invnextnongrenade invprev ipc_console_disable
 syn keyword sourceCommand       ipc_console_disable_all ipc_console_show item_show_whitelistable_definitions
 syn keyword sourceCommand       itemtest itemtest_botcontrols join_class joyadvancedupdate jpeg kdtree_test
@@ -263,7 +263,7 @@ syn keyword sourceCommand       reset_expo reset_spawnmenu_counts resetplayersta
 syn keyword sourceCommand       retry rfgc rpt rpt_client_enable rpt_connect rpt_download_log rpt_end
 syn keyword sourceCommand       rpt_password rpt_screenshot rpt_server_enable rpt_start
 syn keyword sourceCommand       rr_debugresponseconcept_exclude rr_reloadresponsesystems save save_finish_async
-syn keyword sourceCommand       save_replay say say_team sb_add sb_move_to_cursor scandemo
+syn keyword sourceCommand       save_replay say say_team say_party sb_add sb_move_to_cursor scandemo
 syn keyword sourceCommand       scavenge_set_round_limit scene_flush scene_playvcd screenshot script_client
 syn keyword sourceCommand       script_debug_client script_dump_all_client script_execute_client
 syn keyword sourceCommand       script_help_client script_reload_entity_code scripted_user_func
@@ -271,7 +271,7 @@ syn keyword sourceCommand       server_game_time setang setang_exact setinfo set
 syn keyword sourceCommand       setpos_exact sf4_meshcache_stats shake shake_stop shake_testpunch
 syn keyword sourceCommand       showGameSettings show_addon_load_order show_addon_metadata show_loadout_toggle
 syn keyword sourceCommand       show_menu showbudget_texture_global_dumpstats showconsole showinfo showmapinfo
-syn keyword sourceCommand       showpanel showschemevisualizer showstatsdlg showtriggers_toggle simple_bot_add
+syn keyword sourceCommand       showpanel show_quest_log showschemevisualizer showstatsdlg showtriggers_toggle simple_bot_add
 syn keyword sourceCommand       sixense_aim_freeaim_spin_disabled sixense_bind sixense_clear_bindings
 syn keyword sourceCommand       sixense_create_default_bindings sixense_delete_binding sixense_disable_gestures
 syn keyword sourceCommand       sixense_list_bindings sixense_select_grenade sixense_select_machinegun
@@ -658,7 +658,8 @@ syn keyword sourceVar           host_timescale host_xbox_e3_restart hostfile hos
 syn keyword sourceVar           hud_achievement_count hud_achievement_count_engineer
 syn keyword sourceVar           hud_achievement_description hud_achievement_glowtime hud_achievement_tracker
 syn keyword sourceVar           hud_airboathint_numentries hud_autoaim_method hud_autoaim_scale_icon
-syn keyword sourceVar           hud_autoreloadscript hud_classautokill hud_combattext hud_combattext_batching
+syn keyword sourceVar           hud_autoreloadscript hud_classautokill hud_combattext
+syn keyword sourceVar           hud_combattext_batching hud_combattext_batching_window hud_combattext_batching_red hud_combattext_batching_green hud_combattext_batching_blue
 syn keyword sourceVar           hud_combattext_healing hud_deathnotice_bots hud_deathnotice_threats
 syn keyword sourceVar           hud_deathnotice_time hud_dmgrecord_persisttime_deaths
 syn keyword sourceVar           hud_dmgrecord_persisttime_other hud_draw_active_reticle hud_draw_fixed_reticle
@@ -853,7 +854,7 @@ syn keyword sourceVar           mp_teamlogo_2 mp_teammatchstat_1 mp_teammatchsta
 syn keyword sourceVar           mp_teammatchstat_holdtime mp_teammatchstat_txt mp_teammates_are_enemies
 syn keyword sourceVar           mp_teamname_1 mp_teamname_2 mp_teamoverride mp_teamplay mp_teamprediction_pct
 syn keyword sourceVar           mp_teamprediction_txt mp_teams_unbalance_limit mp_time_between_capscoring
-syn keyword sourceVar           mp_timelimit mp_tkpunish mp_tournament mp_tournament_allow_non_admin_restart
+syn keyword sourceVar           mp_timelimit mp_tkpunish mp_tournament mp_tournament_readymode mp_tournament_readymode_min mp_tournament_allow_non_admin_restart
 syn keyword sourceVar           mp_tournament_blueteamname mp_tournament_redteamname mp_tournament_stopwatch
 syn keyword sourceVar           mp_tournament_whitelist mp_use_respawn_waves mp_usehwmmodels mp_usehwmvcds
 syn keyword sourceVar           mp_verbose_changelevel_spew mp_waitingforplayers_cancel
@@ -1358,7 +1359,7 @@ syn keyword sourceVar           tf_coach_min_time_played tf_coach_request_nevers
 syn keyword sourceVar           tf_ctf_bonus_time tf_damage_disablespread tf_damage_events_track_for
 syn keyword sourceVar           tf_damage_lineardist tf_damage_range tf_demoman_charge_drain_time
 syn keyword sourceVar           tf_demoman_charge_regen_rate tf_dev_health_on_damage_recover_percentage
-syn keyword sourceVar           tf_dev_marked_for_death_lifetime tf_dingaling tf_dingaling_pitchmaxdmg
+syn keyword sourceVar           tf_dev_marked_for_death_lifetime tf_dingaling tf_dingalingaling_lasthit tf_dingaling_pitchmaxdmg
 syn keyword sourceVar           tf_dingaling_pitchmindmg tf_dingaling_volume tf_dingalingaling
 syn keyword sourceVar           tf_dingalingaling_repeat_delay tf_disguise_menu_controller_mode
 syn keyword sourceVar           tf_escort_recede_time tf_escort_recede_time_overtime
@@ -1369,7 +1370,7 @@ syn keyword sourceVar           tf_flag_caps_per_round tf_force_holidays_off tf_
 syn keyword sourceVar           tf_gamemode_arena tf_gamemode_cp tf_gamemode_ctf tf_gamemode_mvm
 syn keyword sourceVar           tf_gamemode_payload tf_gamemode_sd tf_grenadelauncher_min_contact_speed
 syn keyword sourceVar           tf_highfive_debug tf_highfive_hintcount tf_hud_no_crosshair_on_scope_zoom
-syn keyword sourceVar           tf_hud_notification_duration tf_hud_num_building_alert_beeps tf_invuln_time
+syn keyword sourceVar           tf_hud_notification_duration tf_hud_num_building_alert_beeps tf_invuln_time tf_hud_target_id_disable_floating_health
 syn keyword sourceVar           tf_last_store_pricesheet_version tf_matchgroups
 syn keyword sourceVar           tf_matchmaking_goodenough_count_end tf_matchmaking_goodenough_count_start
 syn keyword sourceVar           tf_matchmaking_goodenough_score_end tf_matchmaking_goodenough_score_start
@@ -1416,7 +1417,7 @@ syn keyword sourceVar           tf_tournament_classlimit_spy tf_tournament_hide_
 syn keyword sourceVar           tf_training_has_prompted_for_forums tf_training_has_prompted_for_loadout
 syn keyword sourceVar           tf_training_has_prompted_for_offline_practice
 syn keyword sourceVar           tf_training_has_prompted_for_options tf_training_has_prompted_for_training
-syn keyword sourceVar           tf_use_fixed_weaponspreads tf_useparticletracers tf_weapon_criticals
+syn keyword sourceVar           tf_use_fixed_weaponspreads tf_useparticletracers tf_weapon_criticals tf_use_min_viewmodels
 syn keyword sourceVar           tf_weapon_select_demo_start_delay tf_weapon_select_demo_time
 syn keyword sourceVar           tf_whip_speed_increase think_limit thirdperson_platformer
 syn keyword sourceVar           thirdperson_screenspace threadpool_affinity threadpool_reserve
@@ -1590,7 +1591,7 @@ syn keyword sourceCheat         cl_glow_los_fade_out_time cl_gunlowerangle cl_gu
 syn keyword sourceCheat         cl_jiggle_bone_debug cl_jiggle_bone_debug_pitch_constraints
 syn keyword sourceCheat         cl_jiggle_bone_debug_yaw_constraints cl_jiggle_bone_invert cl_leafsystemvis
 syn keyword sourceCheat         cl_leveloverview cl_leveloverviewmarker cl_max_shadow_renderable_dist
-syn keyword sourceCheat         cl_maxrenderable_dist cl_obj_test_building_damage cl_overdraw_test
+syn keyword sourceCheat         cl_maxrenderable_dist cl_mvm_wave_status_visible_during_wave cl_obj_test_building_damage cl_overdraw_test
 syn keyword sourceCheat         cl_particle_retire_cost cl_particleeffect_aabb_buffer cl_particles_show_bbox
 syn keyword sourceCheat         cl_particles_show_controlpoints cl_pclass cl_pdump cl_phys2_stats
 syn keyword sourceCheat         cl_phys_show_active cl_phys_timescale cl_pitchdown cl_pitchup
@@ -2175,7 +2176,7 @@ syn keyword sourceCheat         tf_eyeball_boss_debug_orientation tf_eyeball_bos
 syn keyword sourceCheat         tf_eyeball_boss_health_base tf_eyeball_boss_health_per_level
 syn keyword sourceCheat         tf_eyeball_boss_health_per_player tf_eyeball_boss_horiz_damping
 syn keyword sourceCheat         tf_eyeball_boss_hover_height tf_eyeball_boss_lifetime tf_eyeball_boss_speed
-syn keyword sourceCheat         tf_eyeball_boss_vert_damping tf_fastbuild tf_feign_death_damage_scale
+syn keyword sourceCheat         tf_eyeball_boss_vert_damping tf_fastbuild tf_fall_damage_disablespread tf_feign_death_damage_scale
 syn keyword sourceCheat         tf_feign_death_duration tf_flamethrower_boxsize tf_flamethrower_burst_zvelocity
 syn keyword sourceCheat         tf_flamethrower_burstammo tf_flamethrower_drag tf_flamethrower_flametime
 syn keyword sourceCheat         tf_flamethrower_float tf_flamethrower_maxdamagedist
@@ -2269,7 +2270,7 @@ syn keyword sourceCheat         versus_wandering_zombie_density versus_winning_t
 syn keyword sourceCheat         versus_witch_chance versus_witch_chance_finale versus_witch_chance_intro
 syn keyword sourceCheat         versus_witch_flow_team_variation vgui_drawtree view_offset_down
 syn keyword sourceCheat         view_offset_forward view_offset_up view_punch_decay view_recoil_tracking
-syn keyword sourceCheat         viewanim_addkeyframe viewanim_reset viewmodel_fov vis_debug vis_force
+syn keyword sourceCheat         viewanim_addkeyframe viewanim_reset vis_debug vis_force
 syn keyword sourceCheat         vismon_poll_frequency vismon_trace_limit vm_debug
 syn keyword sourceCheat         voice_player_speaking_delay_threshold vomitjar_duration_infected_bot
 syn keyword sourceCheat         vomitjar_duration_infected_pz vomitjar_duration_survivor vomitjar_radius
